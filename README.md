@@ -1,0 +1,2 @@
+# webpanim
+FrameSequenceDrawable  webp
