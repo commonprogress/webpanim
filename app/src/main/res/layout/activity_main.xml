@@ -4,15 +4,64 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000000"
     tools:context=".MainActivity">
 
-    <TextView
+    <FrameLayout
+        android:id="@+id/layout"
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.dongxl.animwebp.view.AnimatedImageView
+            android:id="@+id/imageview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:isAutoPlay="false"
+            app:loopBehavior="loop_finite"
+            app:loopCount="1" />
+
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/bottom1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="播放1次"
+        app:layout_constraintTop_toBottomOf="@+id/layout" />
+
+    <Button
+        android:id="@+id/bottom2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="无限循环"
+        app:layout_constraintTop_toBottomOf="@+id/bottom1" />
+
+    <EditText
+        android:id="@+id/edittext"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:numeric="integer"
+        android:textColor="#ffffff"
+        app:layout_constraintTop_toBottomOf="@+id/bottom2" />
+
+    <Button
+        android:id="@+id/bottom3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="播放"
+        app:layout_constraintLeft_toRightOf="@+id/edittext"
+        app:layout_constraintTop_toBottomOf="@+id/bottom2" />
+
+    <Button
+        android:id="@+id/bottom4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="默认播放"
+        app:layout_constraintTop_toBottomOf="@+id/edittext" />
+
 
 </android.support.constraint.ConstraintLayout>
