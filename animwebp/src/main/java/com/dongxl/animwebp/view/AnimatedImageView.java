@@ -139,10 +139,11 @@ public class AnimatedImageView extends AppCompatImageView {
                 InputStream inputStream = getInputStreamByResource(res, resId);
 //                FrameSequenceDrawable drawable = new FrameSequenceDrawable(inputStream);
                 FrameSequenceDrawable drawable = getFrameSequenceDrawable(inputStream);
-                if(null == drawable){
+                if (null == drawable) {
                     return false;
                 }
                 drawable.setLoopCount(mLoopCount);
+                drawable.setLoopBehavior(mLoopBehavior);
                 drawable.setOnFinishedListener(mDrawableFinishedListener);
                 if (isSrc) {
                     setImageDrawable(drawable);
@@ -222,10 +223,11 @@ public class AnimatedImageView extends AppCompatImageView {
             InputStream inputStream = am.open(path);
 //            FrameSequenceDrawable drawable = new FrameSequenceDrawable(inputStream);
             FrameSequenceDrawable drawable = getFrameSequenceDrawable(inputStream);
-            if(null == drawable){
+            if (null == drawable) {
                 return false;
             }
             drawable.setLoopCount(mLoopCount);
+            drawable.setLoopBehavior(mLoopBehavior);
             drawable.setOnFinishedListener(mDrawableFinishedListener);
             setImageDrawable(drawable);
             if (mAnimatedSrcDrawable != null) {
@@ -246,10 +248,11 @@ public class AnimatedImageView extends AppCompatImageView {
                 InputStream inputStream = getInputStreamByUri(imageView.getContext(), uri);
 //                FrameSequenceDrawable frameSequenceDrawable = new FrameSequenceDrawable(inputStream);
                 FrameSequenceDrawable frameSequenceDrawable = getFrameSequenceDrawable(inputStream);
-                if(null == frameSequenceDrawable){
+                if (null == frameSequenceDrawable) {
                     return false;
                 }
                 frameSequenceDrawable.setLoopCount(mLoopCount);
+                frameSequenceDrawable.setLoopBehavior(mLoopBehavior);
                 frameSequenceDrawable.setOnFinishedListener(mDrawableFinishedListener);
                 imageView.setImageDrawable(frameSequenceDrawable);
                 if (mAnimatedSrcDrawable != null) {
@@ -335,10 +338,13 @@ public class AnimatedImageView extends AppCompatImageView {
         setLoopFinite();
         if (mAnimatedBgDrawable != null) {
             mAnimatedBgDrawable.setLoopCount(mLoopCount);
+            mAnimatedBgDrawable.setLoopBehavior(mLoopBehavior);
         }
         if (mAnimatedSrcDrawable != null) {
             mAnimatedSrcDrawable.setLoopCount(mLoopCount);
+            mAnimatedSrcDrawable.setLoopBehavior(mLoopBehavior);
         }
+
     }
 
     public void setLoopDefault() {
