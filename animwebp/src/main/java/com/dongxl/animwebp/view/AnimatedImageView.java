@@ -321,14 +321,15 @@ public class AnimatedImageView extends AppCompatImageView {
      */
     private void drawAndAutoPlay(final boolean isAutoPlay) {
         //添加绘制完成判断
-        this.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+        this.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
             @Override
-            public void onGlobalLayout() {
-                AnimatedImageView.this.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+            public boolean onPreDraw() {
+                AnimatedImageView.this.getViewTreeObserver().removeOnPreDrawListener(this);
                 isDrawDone = true;
                 if (isAutoPlay) {
                     startAnimation();
                 }
+                return false;
             }
         });
     }

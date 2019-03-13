@@ -3,7 +3,6 @@ package com.dongxl.webpanim;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -69,13 +68,7 @@ public class MainActivity extends AppCompatActivity {
                 imageview.setLoopDefault();
                 imageview.setImageResource(R.mipmap.icon_live_chongaizhi_anim);
                 if (!imageview.isAutoPlay()) {
-                    imageview.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-                        @Override
-                        public void onGlobalLayout() {
-                            imageview.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                            imageview.startAnimation();
-                        }
-                    });
+                    imageview.startAnimation();
                 }
                 break;
         }
@@ -90,8 +83,8 @@ public class MainActivity extends AppCompatActivity {
             imageview.animatedDestroy();
             imageview.setImageDrawable(null);
         }
-//        imageview.setLoopCount(1);
-//        imageview.setLoopFinite();
+        imageview.setLoopCount(1);
+        imageview.setLoopFinite();
         imageview.setOnFinishedListener(new AnimatedImageView.OnFinishedListener() {
             @Override
             public void onFinished() {
@@ -100,13 +93,7 @@ public class MainActivity extends AppCompatActivity {
         });
         imageview.setImageResource(R.mipmap.icon_master_following);
         if (!imageview.isAutoPlay()) {
-            imageview.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-                @Override
-                public void onGlobalLayout() {
-                    imageview.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                    imageview.startAnimation();
-                }
-            });
+            imageview.startAnimation();
         }
     }
 
@@ -120,21 +107,9 @@ public class MainActivity extends AppCompatActivity {
             imageview.setImageDrawable(null);
         }
         imageview.setLoopInf();
-        imageview.setOnFinishedListener(new AnimatedImageView.OnFinishedListener() {
-            @Override
-            public void onFinished() {
-                Toast.makeText(MainActivity.this, "播放结束", Toast.LENGTH_SHORT).show();
-            }
-        });
         imageview.setImageResource(R.mipmap.icon_master_follow);
         if (!imageview.isAutoPlay()) {
-            imageview.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-                @Override
-                public void onGlobalLayout() {
-                    imageview.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                    imageview.startAnimation();
-                }
-            });
+            imageview.startAnimation();
         }
     }
 
@@ -159,13 +134,7 @@ public class MainActivity extends AppCompatActivity {
         });
         imageview.setImageResource(R.mipmap.icon_video_send_gift);
         if (!imageview.isAutoPlay()) {
-            imageview.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-                @Override
-                public void onGlobalLayout() {
-                    imageview.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                    imageview.startAnimation();
-                }
-            });
+            imageview.startAnimation();
         }
     }
 
